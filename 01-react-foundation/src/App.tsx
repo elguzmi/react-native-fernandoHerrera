@@ -1,5 +1,5 @@
 // import {  BasicFunctions } from './typescript'
-import {  LoginPage } from './components'
+import {  UsersPage } from './components'
 function App() {
   
 
@@ -8,7 +8,8 @@ function App() {
       <h1>Introduccion a React</h1>
       {/* <BasicFunctions /> */}
       {/* <Counter /> */}
-      <LoginPage />
+      {/* <LoginPage /> */}
+      <UsersPage />
     </main>
   )
 }
