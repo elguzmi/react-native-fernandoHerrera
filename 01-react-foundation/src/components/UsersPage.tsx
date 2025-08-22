@@ -1,30 +1,10 @@
-import axios from "axios"
-import { useEffect, useState, type JSX } from "react"
-import type{ ReqRespUserListResponse , User} from "../interfaces"
+import { useUsers } from "../hooks/useUsers"
+import { UserRow } from "./UserRow"
 
-
-const loadUser = async ():Promise<User[]>=>{
-  
-  try {
-    const { data } =  await axios.get<ReqRespUserListResponse>('https://reqres.in/api/users?page=2',{headers:{'x-api-key':'reqres-free-v1'}});
-    console.log(data.data)
-    return data.data
-    
-  } catch (error) {
-    console.log(error)
-    return []
-  }
-}
 
 export const UsersPage = () => {
 
-  const [users, setUsers] = useState<User[]>([])
-  
-  useEffect(()=>{
-    loadUser()
-    .then(setUsers)
-    
-  },[])
+  const {users, nextPage, previousPage} = useUsers()
 
   return (
     <>
@@ -48,27 +28,11 @@ export const UsersPage = () => {
        </table>
 
        <div>
-        <button onClick={()=>{}}>Prev</button>
-        <button onClick={()=>{}}>Next</button>
+        <button onClick={ previousPage }>Prev</button>
+        <button onClick={ nextPage }>Next</button>
        </div>
 
     </>
   )
 }
 
-interface Props{
-  user:User
-}
-
-const UserRow =({user}:Props):JSX.Element=>{
-  const { avatar, first_name, last_name, email} = user
-  return (
-    <tr >
-      <td>
-        <img src={avatar} alt={first_name} width={50} height={50} />
-      </td>
-      <td>{first_name} {last_name}</td>
-      <td>{email}</td>
-    </tr>
-  )
-}

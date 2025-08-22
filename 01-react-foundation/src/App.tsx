@@ -1,5 +1,5 @@
 // import {  BasicFunctions } from './typescript'
-import {  UsersPage } from './components'
+import {  FormsPage } from './components'
 function App() {
   
 
@@ -9,7 +9,8 @@ function App() {
       {/* <BasicFunctions /> */}
       {/* <Counter /> */}
       {/* <LoginPage /> */}
-      <UsersPage />
+      {/* <UsersPage /> */}
+      <FormsPage />
     </main>
   )
 }
